@@ -15,7 +15,7 @@
 	       <h3>Task List</h3>
 	       <form action ="{{route('list.add')}}" method="post">
 	          <div class ="form-group">
-	          <input type = "text" id ="task" name ="task" class ="form-control" placeholder="Type a new task here">
+	          <input type = "text" id ="task" name ="task" class ="form-control" placeholder="Type a new task here" required>
 	          </div>
 	          <button type ="submit" class ="btn btn-primary">Add
 	          </button>
