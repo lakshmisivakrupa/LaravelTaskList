@@ -23,7 +23,7 @@ class ListController extends Controller
         /*If the task already exists,return with a 
           message 
         */ 
-        if($tasks){
+        if ($tasks) {
             return redirect()->back() ->withInput()
                              ->withErrors(['exists' => 
                                 'Task already created']);           
@@ -31,7 +31,7 @@ class ListController extends Controller
         /*It Tasks is not present ,continue with creating a new  
           task 
         */   
-        else{
+        else {
             $tasks = new Task();
             $tasks->taskname = $request->input('task');
             $tasks->created = 0;
@@ -51,17 +51,17 @@ class ListController extends Controller
     public function getEdit(Request $request,$id,$action)
     {
         //delete the task
-        if($action == 'd'){
+        if ($action == 'd') {
             DB::table('tasks')->where('id',$id)->delete();
         }
         //Set the 'created' field of table to 1 for Mark as Done
-        if($action == 'm'){
+        elseif ($action == 'm') {
             DB::table('tasks')
             ->where('id', $id)
             ->update(['created' => 1]);
         }
         //Redirect to edittask page to edit the task
-        if($action == 'e'){
+        elseif ($action == 'e') {
             $task = Task::find($id);
             $taskname = $task->taskname;
             //dd($taskname);
